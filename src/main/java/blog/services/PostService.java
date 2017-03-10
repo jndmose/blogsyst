@@ -16,6 +16,6 @@ public interface PostService {
 
 	Post edit(Post post);
 
-	Void deleteById(Long id);
+	void deleteById(Long id);
 
 }

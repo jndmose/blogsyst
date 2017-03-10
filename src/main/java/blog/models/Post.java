@@ -2,12 +2,30 @@ package blog.models;
 
 import java.util.Date;
 
-public class Post {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "posts")
+public class Post {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(nullable = false, length = 300)
 	private String title;
+	@Lob
+	@Column(nullable = false)
 	private String body;
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	private User author;
+	@Column(nullable = false)
 	private Date date = new Date();
 
 	public Post() {
@@ -59,6 +77,12 @@ public class Post {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	@Override
+	public String toString() {
+		return "Post{" + "id=" + id + ", title='" + title + '\'' + ", body='" + body + '\'' + ", author=" + author
+				+ ", date=" + date + '}';
 	}
 
 }

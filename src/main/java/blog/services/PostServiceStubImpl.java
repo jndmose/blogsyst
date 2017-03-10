@@ -65,9 +65,9 @@ public class PostServiceStubImpl implements PostService {
 	}
 
 	@Override
-	public Void deleteById(Long id) {
+	public void deleteById(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		// return null;
 	}
 
 }
